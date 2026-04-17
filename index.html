@@ -1,142 +1,846 @@
 <!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Eric May</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Eric May - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Variables ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<h1><strong>I am Eric May</strong>, a developer with experience in many fields.</h1>
-				</div>
-			</header>
+    :root {
+      --bg:        #0e0f11;
+      --bg-card:   #15171a;
+      --bg-lift:   #1c1f23;
+      --border:    #2a2d32;
+      --border-hi: #3d4147;
+      --text:      #c8cdd6;
+      --text-dim:  #636a75;
+      --text-hi:   #edf0f5;
+      --accent:    #7eb8a4;   /* muted teal - calm, technical */
+      --accent-2:  #c49a6c;   /* warm amber - human touch */
+      --accent-glow: rgba(126, 184, 164, 0.12);
+      --font-mono: 'DM Mono', monospace;
+      --font-serif:'Fraunces', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      --radius:    6px;
+      --sidebar-w: 320px;
+    }
 
-		<!-- Main -->
-			<div id="main">
+    html { scroll-behavior: smooth; }
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>A passion for improvement and utility<br />
-							looking for the next new creative outlet.</h2>
-						</header>
-						<p>I have interacted with technology across a wide variety of fields and situations, including designing and creating vital systems for commerce and regulatory environments, helping to ensure the continued integrity and operation of those systems, and helping others become proficient with the processes employed.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</section>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-				<!-- Two -->
-					<section id="two">
-						<h2>Expertise</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Back End Development</h3>
-								<p>Maintaining and querying databases, system logic for clients and backends.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Front End Development</h3>
-								<p>Web interfaces, react, and UI/UX implementation and design.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Quality Assurance</h3>
-								<p>Capable debugging skills coupled with strong documentation and an understanding of systems ensures productivity gains.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Testing and Continuous Integration</h3>
-								<p>I have utilized automated testing and processes to prevent regression errors and give students clear feedback based on their work.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Communication and Support</h3>
-								<p>Conveying requirements and collecting required data. Providing technical support various environments as needed.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>App Development and Management</h3>
-								<p>Independently developed a feature rich Minesweeper app,  with monetization integrated, and published to Steam and Google Play.</p>
-							</article>
-						</div>
-						<!-- <ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul> -->
-					</section>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    a:hover { color: var(--text-hi); }
 
-				<!-- Three -->
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>If you have questions or an opportunity to work together, or to request my full resume, please use the most convenient method to reach out. I'd love to hear from you! Contracting and employment requests welcome.</p>
-						<div class="row">
-							<!-- <div class="col-8 col-12-small">
-								<form method="post" action="#">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div> -->
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										Orange/Riverside/Ontario Counties, California<br>
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										‪(323) 405-7010
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">ericmay256@gmail.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+    /* ─── Layout ────────────────────────────────────────────────────── */
+    .wrapper {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      min-height: 100vh;
+    }
 
-			</div>
+    /* ─── Sidebar ───────────────────────────────────────────────────── */
+    #sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 3rem 2rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      background: var(--bg-card);
+    }
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://github.com/EricMay256" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="mailto:ericmay256@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Eric May 2025</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+    .sidebar-top { display: flex; flex-direction: column; gap: 0.75rem; }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .moniker {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
 
-	</body>
+    #sidebar h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text-hi);
+      line-height: 1.15;
+    }
 
+    #sidebar h1 em {
+      font-style: italic;
+      color: var(--accent-2);
+    }
+
+    .tagline {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      border-left: 2px solid var(--border-hi);
+      padding-left: 0.85rem;
+    }
+
+    .available-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(126, 184, 164, 0.25);
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+      width: fit-content;
+    }
+    .available-pill::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    /* Sidebar nav */
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .sidebar-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      padding: 0.4rem 0.5rem;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .sidebar-nav a .nav-marker {
+      width: 18px;
+      height: 1px;
+      background: var(--border-hi);
+      transition: width 0.2s, background 0.2s;
+    }
+    .sidebar-nav a:hover { color: var(--text-hi); background: var(--bg-lift); }
+    .sidebar-nav a:hover .nav-marker { width: 28px; background: var(--accent); }
+
+    /* Sidebar stack */
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      background: var(--bg-lift);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .stack-tag:hover { color: var(--text); border-color: var(--border-hi); }
+
+    /* Sidebar contact */
+    .contact-links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .contact-links a:hover { color: var(--accent); }
+    .contact-links a svg { flex-shrink: 0; opacity: 0.6; }
+
+    .sidebar-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── Main Content ───────────────────────────────────────────────── */
+    #main {
+      padding: 4rem 3.5rem 5rem;
+      max-width: 820px;
+    }
+
+    section { margin-bottom: 5rem; }
+
+    section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text-hi);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── About ─────────────────────────────────────────────────────── */
+    #about p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    #about p:last-child { margin-bottom: 0; }
+
+    #about strong {
+      color: var(--text-hi);
+      font-weight: 500;
+    }
+
+    /* ─── Projects ───────────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      color: inherit;
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .project-card.featured .project-main { flex: 1; }
+    .project-card.featured .project-side {
+      flex-shrink: 0;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text-hi);
+      line-height: 1.3;
+    }
+
+    .project-card p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      background: var(--bg-lift);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.18rem 0.45rem;
+    }
+
+    .tag.accent { color: var(--accent); border-color: rgba(126, 184, 164, 0.3); background: var(--accent-glow); }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      transition: color 0.2s;
+    }
+    .project-card:hover .project-link { color: var(--accent); }
+
+    /* ─── Teaching / Experience ───────────────────────────────────────── */
+    .exp-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      padding-top: 0.2rem;
+      white-space: nowrap;
+    }
+
+    .exp-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text-hi);
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-org {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exp-content li {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-content li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--border-hi);
+    }
+
+    /* ─── Writing ──────────────────────────────────────────────────── */
+    .writing-blurb {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .writing-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid rgba(126, 184, 164, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .writing-cta:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─── Contact ───────────────────────────────────────────────────── */
+    #contact-section p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-card:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-card svg { flex-shrink: 0; }
+    .contact-card span { font-family: var(--font-mono); font-size: 0.75rem; }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+
+    /* ─── Animations ─────────────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+    /* ─── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .wrapper { grid-template-columns: 1fr; }
+
+      #sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 2rem 1.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .sidebar-top { flex: 1; min-width: 240px; }
+      .sidebar-nav { display: none; }
+
+      #main { padding: 2.5rem 1.5rem 3rem; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { flex-direction: column; }
+      .project-card.featured .project-side { width: 100%; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.25rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- ─── Sidebar ─────────────────────────────────────────────────────── -->
+    <aside id="sidebar">
+      <div class="sidebar-top fade-in">
+        <span class="moniker">// portfolio</span>
+        <h1>Eric <em>May</em></h1>
+        <p class="tagline">Software engineer building games, simulation systems, and the tools that teach others to build.</p>
+        <div class="available-pill">Open to new roles</div>
+      </div>
+
+      <nav class="sidebar-nav fade-in">
+        <a href="#about"><span class="nav-marker"></span>About</a>
+        <a href="#projects"><span class="nav-marker"></span>Projects</a>
+        <a href="#experience"><span class="nav-marker"></span>Experience</a>
+        <a href="#writing"><span class="nav-marker"></span>Writing</a>
+        <a href="#contact-section"><span class="nav-marker"></span>Contact</a>
+      </nav>
+
+      <div class="fade-in">
+        <p class="sidebar-section-label">Stack</p>
+        <div class="stack-list">
+        <!-- Lead with flagship -->
+        <span class="stack-tag">Unity</span>
+        <span class="stack-tag">C#</span>
+
+        <!-- Other languages -->
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Pytest</span>
+        <span class="stack-tag">Go</span>
+        <span class="stack-tag">C++</span>
+        <span class="stack-tag">SQL</span>
+        <span class="stack-tag">HTML/CSS/JS</span>
+
+        <!-- Frontend -->
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">Redux</span>
+
+        <!-- Backend / Web -->
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">REST APIs</span>
+
+        <!-- Data -->
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Redis</span>
+
+        <!-- Infra -->
+        <span class="stack-tag">AWS</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Heroku</span>
+        <span class="stack-tag">CI/CD</span>
+        <span class="stack-tag">GitHub Actions</span>
+        <span class="stack-tag">Linux</span>
+
+        <!-- Tools -->
+        <span class="stack-tag">Git</span>
+        <span class="stack-tag">Newtonsoft.Json</span>
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <p class="sidebar-section-label">Links</p>
+        <div class="contact-links">
+          <a href="https://github.com/EricMay256" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            github.com/EricMay256
+          </a>
+          <a href="https://ericmay256.medium.com/" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            ericmay256.medium.com
+          </a>
+          <a href="mailto:EricMay256@gmail.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            EricMay256@gmail.com
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ─── Main ────────────────────────────────────────────────────────── -->
+    <div id="main">
+
+      <!-- About -->
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I'm a software engineer with a decade of applied CS experience spanning 
+          <strong>Unity gameplay and simulation systems</strong>, full-stack web development, 
+          and technical curriculum design. I write and ship production software: 
+          a commercial game on Steam, a scalable cloud-hosted leaderboard backend in active use, 
+          and a Unity project framework that has guided 250+ students in CPSC 386 through their 
+          first complete game project. On the backend side, I work in Python 
+          with FastAPI, PostgreSQL, and Redis, deployed on scalable cloud infrastructure with 
+          cache invalidation, concurrent-write handling, and testing.
+        </p>
+        <p>
+          Before and alongside teaching, I took on contract engineering work: migrating 
+          legacy desktop applications, building prototypes for external clients, and 
+          managing cloud infrastructure. Earlier in my career, I worked 
+          full-stack on a marketplace startup: Go and React, Postgres, payments, and AWS-deployed services. 
+          I architect systems with intention, write clean code, 
+          and communicate technical work clearly to both engineers and non-engineers.
+        </p>
+        <p>
+          I'm relocating to <strong>Blacksburg, VA</strong> and looking for what's next. 
+          My heart's in games and simulation, but I'm just as happy building backend 
+          systems, supporting other developers through tooling and advocacy, or working 
+          in education and edtech.
+        </p>
+        <p>
+          Open to remote and hybrid roles.
+        </p>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+
+          <!-- Featured: High Score Server -->
+          <a class="project-card featured" href="https://github.com/EricMay256/HighScoreServer" target="_blank" rel="noopener">
+            <div class="project-main">
+              <span class="project-label">Production Online Services</span>
+              <h3>High Score Server</h3>
+              <p>
+                Production REST backend for Unity game leaderboards. Handles concurrent 
+                score submissions across multiple game modes and time periods, with rate limiting,
+                authentication, Redis-cached reads, cache invalidation, testing, 
+                and a clean C# SDK for Unity client integration. Cloud hosted on Heroku with PostgreSQL 
+                and Redis add-ons. Designed to serve multiple games from a single scalable deployment.
+              </p>
+              <div class="tag-row">
+                <span class="tag accent">FastAPI</span>
+                <span class="tag accent">Python</span>
+                <span class="tag accent">PostgreSQL</span>
+                <span class="tag">Redis</span>
+                <span class="tag">Pytest</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">Heroku</span>
+                <span class="tag">C# Unity SDK</span>
+                <span class="tag">REST API</span>
+                <span class="tag">Scalable</span>
+              </div>
+              <span class="project-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                EricMay256/HighScoreServer
+              </span>
+            </div>
+            <div class="project-side">
+              <div style="background: var(--bg-lift); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); line-height: 2;">
+                <div style="color: var(--accent); margin-bottom: 0.5rem;">// architecture</div>
+                <div>Client  → Unity SDK</div>
+                <div style="color: var(--border-hi);">       ↓</div>
+                <div>API     → FastAPI</div>
+                <div style="color: var(--border-hi);">       ↓</div>
+                <div>Cache   → Redis</div>
+                <div style="color: var(--border-hi);">       ↓</div>
+                <div>DB      → Postgres</div>
+                <div style="color: var(--border-hi);">       ↓</div>
+                <div>Host    → Heroku</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Minesweeper -->
+          <a class="project-card" href="https://store.steampowered.com/app/2425970/Minesweeper_Madness/" target="_blank" rel="noopener">
+            <span class="project-label">Shipped Commercial Game</span>
+            <h3>Minesweeper</h3>
+            <p>
+              Feature-complete Minesweeper with classic and custom gameplay modes. 
+              Full production pipeline: design, implementation, QA, platform submission, 
+              and post-launch support. Available on Steam; previously on Android.
+            </p>
+            <div class="tag-row">
+              <span class="tag accent">Unity</span>
+              <span class="tag accent">C#</span>
+              <span class="tag">Steam</span>
+              <span class="tag">Android (prev.)</span>
+            </div>
+            <span class="project-link">
+            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z"/>
+              <path d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.7 1.7 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027m2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048"/>
+            </svg>              
+            Minesweeper Madness
+            </span>
+          </a>
+
+          <!-- UBear -->
+          <a class="project-card" href="https://github.com/EricMay256/UBear" target="_blank" rel="noopener">
+            <span class="project-label">Unity Framework / Tooling</span>
+            <h3>UBear Framework</h3>
+            <p>
+              Personal Unity library for reusable systems, components, and developer 
+              quality-of-life tooling. Includes the C# SDK client for the High Score 
+              Server. Reduces repeated architecture effort across projects.
+            </p>
+            <div class="tag-row">
+              <span class="tag accent">Unity</span>
+              <span class="tag accent">C#</span>
+              <span class="tag">Game Architecture</span>
+              <span class="tag">SDK Design</span>
+            </div>
+            <span class="project-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              EricMay256/UBear
+            </span>
+          </a>
+
+          <!-- Intro Game Dev Course -->
+          <a class="project-card" href="https://github.com/EricMay256/intro-gamedev-course" target="_blank" rel="noopener">
+            <span class="project-label">Curriculum Engineering</span>
+            <h3>Intro Game Dev Course</h3>
+            <p>
+              The Unity project backbone for CPSC 386: Introduction to Game Development course. 
+              Designed to introduce zero-experience students to the full range of Unity 
+              concepts through hands-on incremental implementation. Used by 250+ students 
+              across multiple semesters.
+            </p>
+            <div class="tag-row">
+              <span class="tag accent">Unity</span>
+              <span class="tag accent">C#</span>
+              <span class="tag">Curriculum Design</span>
+              <span class="tag">Technical Education</span>
+            </div>
+            <span class="project-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              EricMay256/intro-gamedev-course
+            </span>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="exp-item">
+          <span class="exp-date">2016 – Present</span>
+          <div class="exp-content">
+            <h3>Lecturer, Computer Science</h3>
+            <div class="exp-org">California State University, Fullerton</div>
+            <ul>
+              <li>Taught over 1,000 students total across the full course range.</li>
+              <li>Mentored over 500 students through full-cycle software development projects, from concept to deployment.</li>
+              <li>Designed and built the Game Development course (CPSC 386) curriculum from the ground up; replaced theory-only content with a hands-on Unity/C# project track.</li>
+              <li>Managed 3–5 sections per semester; built automated grading infrastructure on GitHub Classroom submissions with GitHub Actions CI to assess code submissions at scale.</li>
+              <li>Introduced Git-based assignment workflows via GitHub Classroom, configured for Canvas LMS.</li>
+              <li>Independently authored AI academic integrity policy during the initial wave of generative AI adoption.</li>
+              <li>Courses span game development, software engineering, and introductory CS, taught across lower and upper-division levels.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-date">2013 – Present</span>
+          <div class="exp-content">
+            <h3>Independent Developer / Contractor</h3>
+            <div class="exp-org">Self-Employed</div>
+            <ul>
+              <li>Contract engagements including migrating a legacy VB.NET application to C# with a newly designed SQL schema, and delivering playable game prototypes for external clients.</li>
+              <li>Full ownership of personal projects (architecture, scope, version control, and post-launch support) across Unity/C# game and backend work.</li>
+              <li>Built and deployed a production Python/FastAPI leaderboard backend on Heroku (PostgreSQL, Redis, CI/CD pipeline, authentication, rate limiting, and cache invalidation) with a C# SDK for Unity client integration.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-date">May – Nov 2015</span>
+          <div class="exp-content">
+            <h3>Back-End Software Developer</h3>
+            <div class="exp-org">Eddi</div>
+            <ul>
+              <li>Generalist full-stack contributor across the codebase: React/Redux frontend and Go backend using go-gorm for PostgreSQL access.</li>
+              <li>Developed payment processing features using Braintree, working on the flows that handled transactions across the marketplace.</li>
+              <li>Deployed and maintained Dockerized services on AWS (EC2, Elastic Beanstalk, RDS, S3) as part of the team's shared backend responsibilities.</li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Writing -->
+      <section id="writing">
+        <h2>Writing</h2>
+        <p class="writing-blurb">
+          I write on Medium about software engineering, Unity and game development, and the 
+          intersection of technical education and industry practice. Targeted at 
+          engineering, developer advocacy, and technical education audiences.
+        </p>
+        <a class="writing-cta" href="https://ericmay256.medium.com/" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          Read on Medium →
+        </a>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact-section">
+        <h2>Contact</h2>
+        <p>
+          Seeking relocation to Blacksburg, VA. Available for remote and hybrid roles. 
+          Contract and employment inquiries both welcome.
+        </p>
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:EricMay256@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>EricMay256@gmail.com</span>
+          </a>
+          <a class="contact-card" href="https://github.com/EricMay256" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>github.com/EricMay256</span>
+          </a>
+          <a class="contact-card" href="https://ericmay256.medium.com/" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            <span>ericmay256.medium.com</span>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /main -->
+  </div><!-- /wrapper -->
+
+  <footer>
+    <p>© Eric May 2026 · Blacksburg, VA</p>
+    <p>Open to remote · Game Programming · Tools Programming · Online Services · Full-Stack · Backend · 
+Unity · Unreal · Developer Advocacy · Technical Education</p>
+  </footer>
+
+</body>
 </html>
-
-
