@@ -328,6 +328,24 @@
 
     .tag.accent { color: var(--accent); border-color: rgba(126, 184, 164, 0.3); background: var(--accent-glow); }
 
+    /* ─── Project card media strip ───────────────────────────────────── */
+    .card-media {
+      display: flex;
+      gap: 1px;                     /* hairline divider via background showing through */
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 150px;
+      flex-shrink: 0;
+    }
+    .card-media img {
+      flex: 1 1 0;
+      width: 0;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -534,6 +552,7 @@
       #main { padding: 2.5rem 1.5rem 3rem; }
 
       .projects-grid { grid-template-columns: 1fr; }
+      .card-media { height: 180px; }
       .project-card.featured { flex-direction: column; }
       .project-card.featured .project-side { width: 100%; }
 
@@ -715,8 +734,12 @@
             </div>
           </div>
 
-          <!-- Minesweeper -->
+<!-- Minesweeper -->
           <a class="project-card" href="https://store.steampowered.com/app/2425970/Minesweeper_Madness/" target="_blank" rel="noopener">
+            <div class="card-media" aria-hidden="true">
+              <img src="assets/projects/minesweeper/rect-grid.svg" alt="" loading="lazy" />
+              <img src="assets/projects/minesweeper/hex-grid.svg"  alt="" loading="lazy" />
+            </div>
             <span class="project-label">Shipped Commercial Game</span>
             <h3>Minesweeper</h3>
             <p>
