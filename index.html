@@ -242,6 +242,16 @@
       margin-bottom: 5rem;
     }
     .hero-band-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-band-video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -788,13 +798,34 @@
       <!--
         Hero band — visual transition between About and Projects.
         No heading, no nav anchor.
+
+        The <img> is the always-visible base layer (also serves as the no-video
+        fallback). The <video> overlays it once loaded and plays a composited
+        loop: Minesweeper chunk-expansion → crossfade → Flick Fest still (held)
+        → loop. The video's final frame matches the poster image exactly, so
+        the loop's transition back to the start happens during a held still
+        on both sides — seamless.
+
+        Reduced-motion rule (in CSS) hides the video so the still becomes
+        the only visible layer. The image's alt and the video's aria-label
+        describe the composited content; both are present for redundancy.
       -->
       <section class="hero-band" aria-label="Featured work showcase">
         <img class="hero-band-media"
              src="assets/hero/poster.svg"
-             alt="Minesweeper showing chunk expansion, transitioning to Flick Fest with a recently-submitted score on the leaderboard"
+             alt="Flick Fest with a recently-submitted score on the leaderboard"
              loading="eager"
              decoding="async" />
+        <video class="hero-band-video"
+               poster="assets/hero/poster.svg"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="metadata"
+               aria-label="Minesweeper showing chunk expansion, transitioning to Flick Fest with a recently-submitted score on the leaderboard">
+          <source src="assets/hero/composite.mp4" type="video/mp4" />
+        </video>
       </section>
 
       <!-- Projects -->
