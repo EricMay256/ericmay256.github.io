@@ -227,9 +227,51 @@
     }
     #about p:last-child { margin-bottom: 0; }
 
-    #about strong {
+#about strong {
       color: var(--text-hi);
       font-weight: 500;
+    }
+
+    /* ─── Hero band ──────────────────────────────────────────────────── */
+    .hero-band {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      overflow: hidden;
+      border-radius: var(--radius);
+      margin-bottom: 5rem;
+    }
+    .hero-band-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /*
+      Bottom-edge bleed — gradient from transparent to page background.
+      ::after sits over the bottom 20% of the band; most of the opacity
+      ramp is in the bottom 8% for a more cinematic curve than a flat fade.
+    */
+    .hero-band::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 20%;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(14, 15, 17, 0.4) 60%,
+        var(--bg) 100%
+      );
+    }
+    
+    
+    @media (prefers-reduced-motion: reduce) {
+      .hero-band-video { display: none; }
+      .hero-band-media { display: block; }
     }
 
     /* ─── Projects ───────────────────────────────────────────────────── */
@@ -283,6 +325,70 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+
+    /* ─── Side panel: shared vessel for arch diagram + data pane ────── */
+    .side-panel {
+      background: var(--bg-lift);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      line-height: 2;
+    }
+    .side-panel-label {
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .side-panel-arrow {
+      color: var(--border-hi);
+    }
+
+    /* ─── Side panel: data pane (latest submissions, two-row layout) ─── */
+    .data-pane-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+    .data-pane-entry {
+      display: grid;
+      grid-template-columns: 1.5em 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: 0.4em;
+      align-items: baseline;
+    }
+    .data-pane-idx {
+      grid-column: 1;
+      grid-row: 1;
+      color: var(--text-dim);
+    }
+    .data-pane-name {
+      grid-column: 2;
+      grid-row: 1;
+      color: var(--text);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .data-pane-score {
+      grid-column: 3;
+      grid-row: 1;
+      color: var(--accent);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .data-pane-mode {
+      grid-column: 2 / -1;
+      grid-row: 2;
+      color: var(--text-dim);
+      font-size: 0.58rem;
+      letter-spacing: 0.04em;
     }
 
     .project-label {
@@ -551,6 +657,9 @@
 
       #main { padding: 2.5rem 1.5rem 3rem; }
 
+      .hero-band { aspect-ratio: 16 / 9; }
+
+
       .projects-grid { grid-template-columns: 1fr; }
       .card-media { height: 180px; }
       .project-card.featured { flex-direction: column; }
@@ -676,6 +785,18 @@
         </p>
       </section>
 
+      <!--
+        Hero band — visual transition between About and Projects.
+        No heading, no nav anchor.
+      -->
+      <section class="hero-band" aria-label="Featured work showcase">
+        <img class="hero-band-media"
+             src="assets/hero/poster.svg"
+             alt="Minesweeper showing chunk expansion, transitioning to Flick Fest with a recently-submitted score on the leaderboard"
+             loading="eager"
+             decoding="async" />
+      </section>
+
       <!-- Projects -->
       <section id="projects">
         <h2>Projects</h2>
@@ -721,15 +842,21 @@
               </div>
             </div>
             <div class="project-side">
-              <div style="background: var(--bg-lift); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); line-height: 2;">
-                <div style="color: var(--accent); margin-bottom: 0.5rem;">// architecture</div>
+              <div id="hss-architecture" class="side-panel">
+                <div class="side-panel-label">// architecture</div>
                 <div>Client  → Unity SDK</div>
-                <div style="color: var(--border-hi);">       ↓</div>
-                <div>API     → FastAPI ⇄ Redis</div>
-                <div style="color: var(--border-hi);">       ↓</div>
+                <div class="side-panel-arrow">       ↓</div>
+                <div>API     → FastAPI</div>
+                <div class="side-panel-arrow">       ↓</div>
+                <div>Cache   → Redis</div>
+                <div class="side-panel-arrow">       ↓</div>
                 <div>DB      → Postgres</div>
-                <div style="color: var(--border-hi);">       ↓</div>
+                <div class="side-panel-arrow">       ↓</div>
                 <div>Host    → Heroku</div>
+              </div>
+              <div id="hss-data-pane" class="side-panel" hidden>
+                <div class="side-panel-label">// latest submissions</div>
+                <div id="hss-data-pane-body" class="data-pane-list"></div>
               </div>
             </div>
           </div>
@@ -907,5 +1034,101 @@
 Unity · Simulation · Developer Advocacy · Technical Education</p>
   </footer>
 
+    <!--
+    HSS data pane — fetches the 10 most recent Flick Fest submissions and
+    swaps them in for the architecture diagram on success. On any failure
+    (network, timeout, malformed data, empty result), the architecture
+    diagram stays — see the [hidden] attribute on #hss-data-pane in markup.
+
+    type="module" gives us deferred execution and scope isolation without
+    an IIFE. No imports — module syntax is purely for execution semantics.
+  -->
+  <script type="module">
+    // ── Configuration ──────────────────────────────────────────────────
+    const HSS_BASE         = 'https://high-score-server-9db572197af4.herokuapp.com';
+    const FLICK_FEST_MODES = ['classic', 'blitz', 'speedrun'];   // update when modes finalize
+    const FETCH_TIMEOUT_MS = 3000;
+    const ROW_LIMIT        = 5;
+
+    // ── Fetch ──────────────────────────────────────────────────────────
+    async function fetchLatest() {
+      const params = new URLSearchParams({ limit: String(ROW_LIMIT) });
+      for (const mode of FLICK_FEST_MODES) params.append('game_modes', mode);
+      const url = `${HSS_BASE}/api/leaderboard/latest?${params}`;
+
+      const controller = new AbortController();
+      const timeoutId  = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+      try {
+        const response = await fetch(url, { signal: controller.signal });
+        if (!response.ok) return null;
+        const data = await response.json();
+        if (!data || !Array.isArray(data.scores)) return null;
+        return data.scores;
+      } catch (err) {
+        // Network error, timeout, or JSON parse error — fall back silently.
+        console.warn('HSS data pane fetch failed:', err);
+        return null;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+
+    // ── Render ─────────────────────────────────────────────────────────
+    function renderRows(scores) {
+      const list = document.getElementById('hss-data-pane-body');
+      if (!list) return;
+
+      // Build entries via DOM APIs, never innerHTML — defensive against any
+      // future change in player_name validation upstream. Each entry uses
+      // CSS grid (see .data-pane-entry) to lay out idx + name + score on
+      // the top line and the mode tag on a second line beneath.
+      const fragment = document.createDocumentFragment();
+      scores.forEach((entry, i) => {
+        const row = document.createElement('div');
+        row.className = 'data-pane-entry';
+
+        const idx = document.createElement('span');
+        idx.className = 'data-pane-idx';
+        idx.textContent = String(i + 1);
+
+        const name = document.createElement('span');
+        name.className = 'data-pane-name';
+        name.textContent = entry.player ?? '—';
+        name.title = entry.player ?? '';   // tooltip for truncated names
+
+        const score = document.createElement('span');
+        score.className = 'data-pane-score';
+        const scoreNum = Number(entry.score);
+        score.textContent = Number.isFinite(scoreNum) ? scoreNum.toLocaleString() : '—';
+
+        const mode = document.createElement('span');
+        mode.className = 'data-pane-mode';
+        mode.textContent = entry.game_mode ?? '';
+
+        row.append(idx, name, score, mode);
+        fragment.append(row);
+      });
+      list.append(fragment);
+    }
+
+    // ── Swap ───────────────────────────────────────────────────────────
+    function swapToDataPane() {
+      const arch = document.getElementById('hss-architecture');
+      const pane = document.getElementById('hss-data-pane');
+      if (!arch || !pane) return;
+      arch.hidden = true;
+      pane.hidden = false;
+    }
+
+    // ── Entry point ────────────────────────────────────────────────────
+    // Modules execute after DOMContentLoaded by default, so no listener needed.
+    const scores = await fetchLatest();
+    if (scores && scores.length > 0) {
+      renderRows(scores);
+      swapToDataPane();
+    }
+    // else: do nothing. Architecture stays visible.
+  </script>
 </body>
 </html>
