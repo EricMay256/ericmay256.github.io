@@ -324,17 +324,31 @@
 
     .project-card.featured {
       grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      column-gap: 2rem;
+      row-gap: 0.75rem;
+      align-items: start;
     }
-    .project-card.featured .project-main { flex: 1; }
+    .project-card.featured .project-main { 
+      display: contents; 
+    }
     .project-card.featured .project-side {
-      flex-shrink: 0;
-      width: 200px;
+      grid-column: 2;
+      grid-row: 1 / span 3;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+
+    .project-card.featured .project-main > .project-label,
+    .project-card.featured .project-main > h3,
+    .project-card.featured .project-main > p {
+      grid-column: 1;
+    }
+    .project-card.featured .project-main > .tag-row,
+    .project-card.featured .project-main > .project-links {
+      grid-column: 1 / -1;
     }
 
     /* ─── Side panel: shared vessel for arch diagram + data pane ────── */
@@ -709,6 +723,8 @@
       .projects-grid { grid-template-columns: 1fr; }
       .card-media { height: 180px; }
       .project-card.featured { flex-direction: column; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-card.featured .project-side { grid-column: 1; grid-row: auto; }
       .project-card.featured .project-side { width: 100%; }
 
       .contact-grid { grid-template-columns: 1fr; }
@@ -903,13 +919,12 @@
                 <span class="tag accent">FastAPI</span>
                 <span class="tag accent">Python</span>
                 <span class="tag accent">PostgreSQL</span>
-                <span class="tag">Redis</span>
+                <span class="tag">C# Unity SDK</span>
+                <span class="tag">REST API</span>
                 <span class="tag">Pytest</span>
                 <span class="tag">CI/CD</span>
                 <span class="tag">Heroku</span>
-                <span class="tag">C# Unity SDK</span>
-                <span class="tag">REST API</span>
-                <span class="tag">Scalable</span>
+                <span class="tag">Sentry</span>
               </div>
               <div class="project-links">
                 <a class="project-link project-link--primary"
