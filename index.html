@@ -259,8 +259,8 @@
     }
     /*
       Bottom-edge bleed — gradient from transparent to page background.
-      ::after sits over the bottom 20% of the band; most of the opacity
-      ramp is in the bottom 8% for a more cinematic curve than a flat fade.
+      ::after sits over the bottom 4% of the band; most of the opacity
+      applied at the bottom for a more cinematic curve than a flat fade.
     */
     .hero-band::after {
       content: '';
@@ -268,7 +268,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      height: 20%;
+      height: 4%;
       pointer-events: none;
       background: linear-gradient(
         to bottom,
@@ -880,12 +880,12 @@
       -->
       <section class="hero-band" aria-label="Featured work showcase">
         <img class="hero-band-media"
-             src="assets/hero/poster.svg"
+             src="assets/hero/poster.png"
              alt="Flick Fest with a recently-submitted score on the leaderboard"
              loading="eager"
              decoding="async" />
         <video class="hero-band-video"
-               poster="assets/hero/poster.svg"
+               poster="assets/hero/poster.png"
                autoplay
                muted
                loop
