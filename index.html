@@ -227,7 +227,7 @@
     }
     #about p:last-child { margin-bottom: 0; }
 
-#about strong {
+    #about strong {
       color: var(--text-hi);
       font-weight: 500;
     }
@@ -324,17 +324,31 @@
 
     .project-card.featured {
       grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      column-gap: 2rem;
+      row-gap: 0.75rem;
+      align-items: start;
     }
-    .project-card.featured .project-main { flex: 1; }
+    .project-card.featured .project-main { 
+      display: contents; 
+    }
     .project-card.featured .project-side {
-      flex-shrink: 0;
-      width: 200px;
+      grid-column: 2;
+      grid-row: 1 / span 3;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+
+    .project-card.featured .project-main > .project-label,
+    .project-card.featured .project-main > h3,
+    .project-card.featured .project-main > p {
+      grid-column: 1;
+    }
+    .project-card.featured .project-main > .tag-row,
+    .project-card.featured .project-main > .project-links {
+      grid-column: 1 / -1;
     }
 
     /* ─── Side panel: shared vessel for arch diagram + data pane ────── */
@@ -588,6 +602,42 @@
       color: var(--accent);
     }
 
+    .writing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.writing-item {
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+.writing-item:hover { border-color: var(--accent); }
+
+.writing-item-title {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+.writing-item-title:hover { color: var(--accent); }
+
+.writing-item-pull {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
     /* ─── Contact ───────────────────────────────────────────────────── */
     #contact-section p {
       font-size: 0.9rem;
@@ -673,6 +723,8 @@
       .projects-grid { grid-template-columns: 1fr; }
       .card-media { height: 180px; }
       .project-card.featured { flex-direction: column; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-card.featured .project-side { grid-column: 1; grid-row: auto; }
       .project-card.featured .project-side { width: 100%; }
 
       .contact-grid { grid-template-columns: 1fr; }
@@ -856,22 +908,23 @@
               <h3>High Score Server</h3>
               <p>
                 Production REST backend for Unity game leaderboards. Handles concurrent 
-                score submissions across multiple game modes and time periods, with rate limiting,
-                authentication, Redis-cached reads, cache invalidation, testing, 
-                and a clean C# SDK for Unity client integration. Cloud hosted on Heroku with PostgreSQL 
-                and Redis add-ons. Designed to serve multiple games from a single scalable deployment.
+                score submissions across multiple game modes and time periods, with rate limiting, 
+                authentication, cached reads with invalidation, and a clean C# SDK for 
+                Unity client integration. Hosted on Heroku with PostgreSQL and an opt-in Redis 
+                add-on. Integration tests run on GitHub Actions against an ephemeral PostgreSQL 
+                service on every push and PR, with continuous deploys from main. Production 
+                observability via Sentry with sampled performance tracing.
               </p>
               <div class="tag-row">
                 <span class="tag accent">FastAPI</span>
                 <span class="tag accent">Python</span>
                 <span class="tag accent">PostgreSQL</span>
-                <span class="tag">Redis</span>
+                <span class="tag">C# Unity SDK</span>
+                <span class="tag">REST API</span>
                 <span class="tag">Pytest</span>
                 <span class="tag">CI/CD</span>
                 <span class="tag">Heroku</span>
-                <span class="tag">C# Unity SDK</span>
-                <span class="tag">REST API</span>
-                <span class="tag">Scalable</span>
+                <span class="tag">Sentry</span>
               </div>
               <div class="project-links">
                 <a class="project-link project-link--primary"
@@ -880,11 +933,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
                   Live Demo
                 </a>
+                <a class="project-link project-link--primary"
+                    href="https://ericmay256.github.io/Flick-Fest-Build/"
+                    target="_blank" rel="noopener">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    Play Flick Fest
+                </a>
                 <a class="project-link"
                    href="https://github.com/EricMay256/HighScoreServer"
                    target="_blank" rel="noopener">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
                   Source
+                </a>
+                                <a class="project-link"
+                   href="https://ericmay256.medium.com/what-i-learned-building-a-high-score-server-schemas-as-claims-31bcd2d65c2a"
+                   target="_blank" rel="noopener">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                  Devlog
                 </a>
               </div>
             </div>
@@ -895,61 +960,75 @@
                 <div class="side-panel-arrow">       ↓</div>
                 <div>API     → FastAPI</div>
                 <div class="side-panel-arrow">       ↓</div>
-                <div>Cache   → Redis</div>
+                <div>Cache   → Memory/Opt-In Redis</div>
                 <div class="side-panel-arrow">       ↓</div>
                 <div>DB      → Postgres</div>
                 <div class="side-panel-arrow">       ↓</div>
                 <div>Host    → Heroku</div>
               </div>
               <div id="hss-data-pane" class="side-panel" hidden>
-                <div class="side-panel-label">// latest submissions</div>
+                <div class="side-panel-label">//latest flick fest scores</div>
                 <div id="hss-data-pane-body" class="data-pane-list"></div>
               </div>
             </div>
           </div>
 
-<!-- Minesweeper -->
-          <a class="project-card" href="https://store.steampowered.com/app/2425970/Minesweeper_Madness/" target="_blank" rel="noopener">
+          <!-- Minesweeper -->
+          <div class="project-card">
             <div class="card-media" aria-hidden="true">
               <img src="assets/projects/minesweeper/rect-grid.png" alt="" loading="lazy" />
               <img src="assets/projects/minesweeper/hex-grid.png"  alt="" loading="lazy" />
             </div>
             <span class="project-label">Shipped Commercial Game</span>
-            <h3>Minesweeper</h3>
+            <h3>Minesweeper Madness</h3>
             <p>
               Feature-complete Minesweeper with classic and custom gameplay modes. 
-              Full production pipeline: design, implementation, QA, platform submission, 
-              and post-launch support. Available on Steam; previously on Android.
+              Full production pipeline ownership: design, implementation, QA, and shipping 
+              to Steam and Google Play with post-launch support.
             </p>
             <div class="tag-row">
               <span class="tag accent">Unity</span>
               <span class="tag accent">C#</span>
               <span class="tag">Steam</span>
-              <span class="tag">Android (prev.)</span>
+              <span class="tag">Google Play (prev.)</span>
             </div>
-            <span class="project-link">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z"/>
-              <path d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.7 1.7 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027m2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048"/>
-            </svg>              
-            Minesweeper Madness
-            </span>
-          </a>
+            <div class="project-links">
+              <a class="project-link project-link--primary"
+                 href="https://store.steampowered.com/app/2425970/Minesweeper_Madness/"
+                 target="_blank" rel="noopener">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z"/>
+                  <path d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.7 1.7 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027m2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048"/>
+                </svg>
+                Steam
+              </a>
+              <a class="project-link"
+                 href="https://ericmay256.medium.com/platforms-as-cost-why-shipping-small-games-on-google-play-isnt-free-c5997bd54e22"
+                 target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                Postmortem
+              </a>
+            </div>
+          </div>
 
           <!-- UBear -->
           <a class="project-card" href="https://github.com/EricMay256/UBear" target="_blank" rel="noopener">
             <span class="project-label">Unity Framework / Tooling</span>
             <h3>UBear Framework</h3>
             <p>
-              Personal Unity library for reusable systems, components, and developer 
-              quality-of-life tooling. Includes the C# SDK client for the High Score 
-              Server. Reduces repeated architecture effort across projects.
+              Cross-project Unity library of reusable systems, components, and tooling — 
+              including the C# SDK client for the High Score Server. Designed as 
+              composable primitives rather than opinionated frameworks. 
+              Published as a versioned UPM package (<code>com.ericmay.ubear</code>), 
+              MIT-licensed and installable via Unity Package Manager from the repo's git URL.
             </p>
             <div class="tag-row">
               <span class="tag accent">Unity</span>
               <span class="tag accent">C#</span>
+              <span class="tag">UPM Package</span>
               <span class="tag">Game Architecture</span>
               <span class="tag">SDK Design</span>
+              <span class="tag">MIT</span>
             </div>
             <span class="project-link">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -964,7 +1043,7 @@
             <p>
               The Unity project backbone for CPSC 386: Introduction to Game Development course. 
               Designed to introduce zero-experience students to the full range of Unity 
-              concepts through hands-on incremental implementation. Used by 250+ students 
+              concepts through hands-on incremental implementation. Used by 550+ students 
               across multiple semesters.
             </p>
             <div class="tag-row">
@@ -992,9 +1071,9 @@
             <h3>Lecturer, Computer Science</h3>
             <div class="exp-org">California State University, Fullerton</div>
             <ul>
-              <li>Taught over 1,000 students total across the full course range.</li>
-              <li>Mentored over 500 students through full-cycle software development projects, from concept to deployment.</li>
-              <li>Designed and built the Game Development course (CPSC 386) curriculum from the ground up; replaced theory-only content with a hands-on Unity/C# project track.</li>
+              <li>Taught over 2,700 students total across the full course range.</li>
+              <li>Mentored over 1,000 students through full-cycle software development projects, from concept to deployment.</li>
+              <li>Redesigned improved Game Development course (CPSC 386) curriculum; augmented theory-only focus with a hands-on Unity/C# project track. Served over 500 students.</li>
               <li>Managed 3–5 sections per semester; built automated grading infrastructure on GitHub Classroom submissions with GitHub Actions CI to assess code submissions at scale.</li>
               <li>Introduced Git-based assignment workflows via GitHub Classroom, configured for Canvas LMS.</li>
               <li>Independently authored AI academic integrity policy during the initial wave of generative AI adoption.</li>
@@ -1039,9 +1118,29 @@
           intersection of technical education and industry practice. Targeted at 
           engineering, developer advocacy, and technical education audiences.
         </p>
+        <ul class="writing-list">
+          <li class="writing-item">
+            <a class="writing-item-title" href="https://ericmay256.medium.com/what-i-learned-building-a-high-score-server-schemas-as-claims-31bcd2d65c2a" target="_blank" rel="noopener">
+              Schemas as Claims: What I Learned Building a High Score Server
+            </a>
+            <p class="writing-item-pull">
+              On building a FastAPI/Postgres backend for game leaderboards — in the end, I arrived
+              at the same pattern those mobile games used all along, and now I understand why it works.
+            </p>
+          </li>
+          <li class="writing-item">
+            <a class="writing-item-title" href="https://ericmay256.medium.com/platforms-as-cost-why-shipping-small-games-on-google-play-isnt-free-c5997bd54e22" target="_blank" rel="noopener">
+              Platforms as Cost: Why Shipping Small Games on Google Play Isn't Free
+            </a>
+            <p class="writing-item-pull">
+              On the Steam vs. Google Play tradeoff after shipping Minesweeper Madness — every platform
+              charges ongoing maintenance in developer hours, not just fees.
+            </p>
+          </li>
+        </ul>
         <a class="writing-cta" href="https://ericmay256.medium.com/" target="_blank" rel="noopener">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-          Read on Medium →
+          More writing on Medium →
         </a>
       </section>
 
